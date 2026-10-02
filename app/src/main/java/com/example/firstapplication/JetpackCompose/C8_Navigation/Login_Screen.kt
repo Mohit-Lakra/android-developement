@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -26,10 +25,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 
-@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun LoginScreen(){
+fun LoginScreen(NavController: NavHostController) {
     var USERNAME by remember { mutableStateOf("") }
     var PASSWORD by remember { mutableStateOf("") }
     Column(
@@ -55,7 +54,9 @@ fun LoginScreen(){
         )
         Spacer(modifier = Modifier.height(32.dp))
         Button(
-            onClick = {},
+            onClick = {
+                NavController.navigate(MyNavClass.HomeScreen)
+            },
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.DarkGray
